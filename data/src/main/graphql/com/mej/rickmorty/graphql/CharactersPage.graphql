@@ -1,0 +1,16 @@
+# Pede apenas os campos que a lista exibe. Essa e a vantagem pratica do
+# GraphQL sobre REST aqui: a tela de lista nao paga pelo payload do detalhe.
+query CharactersPage($page: Int, $filter: FilterCharacter) {
+  characters(page: $page, filter: $filter) {
+    info {
+      next
+    }
+    results {
+      id
+      name
+      status
+      species
+      image
+    }
+  }
+}

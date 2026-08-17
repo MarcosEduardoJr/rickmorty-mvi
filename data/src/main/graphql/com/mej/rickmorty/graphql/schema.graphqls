@@ -1,0 +1,50 @@
+# Subconjunto do schema publico de rickandmortyapi.com/graphql com os tipos
+# usados pelas operacoes deste app. Versionar o schema mantem o build
+# reprodutivel e offline; `./gradlew downloadApolloSchema` atualiza o arquivo.
+type Query {
+  characters(page: Int, filter: FilterCharacter): Characters
+  character(id: ID!): Character
+}
+
+input FilterCharacter {
+  name: String
+  status: String
+  species: String
+  type: String
+  gender: String
+}
+
+type Characters {
+  info: Info
+  results: [Character]
+}
+
+type Info {
+  count: Int
+  pages: Int
+  next: Int
+  prev: Int
+}
+
+type Character {
+  id: ID
+  name: String
+  status: String
+  species: String
+  gender: String
+  image: String
+  origin: Location
+  episode: [Episode]
+}
+
+type Location {
+  id: ID
+  name: String
+}
+
+type Episode {
+  id: ID
+  name: String
+  air_date: String
+  episode: String
+}

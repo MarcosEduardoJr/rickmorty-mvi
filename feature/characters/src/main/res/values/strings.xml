@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="characters_title">Personagens</string>
+    <string name="characters_search_label">Buscar por nome</string>
+    <string name="characters_search_helper">A busca acontece enquanto você digita.</string>
+    <string name="characters_filter_all">Todos</string>
+    <string name="status_alive">Vivo</string>
+    <string name="status_dead">Morto</string>
+    <string name="status_unknown">Desconhecido</string>
+
+    <string name="state_loading">Carregando personagens</string>
+    <string name="state_loading_more">Carregando mais personagens</string>
+    <string name="state_empty_title">Nenhum personagem encontrado</string>
+    <string name="state_empty_body">Ajuste a busca ou o filtro de status.</string>
+    <string name="state_error_title">Não foi possível carregar</string>
+    <string name="action_retry">Tentar de novo</string>
+
+    <string name="error_network">Sem conexão com a internet.</string>
+    <string name="error_timeout">O servidor demorou demais para responder.</string>
+    <string name="error_server">Erro do servidor: %1$s</string>
+    <string name="error_unknown">Erro inesperado.</string>
+
+    <string name="character_meta">%1$s · %2$s</string>
+    <string name="character_open">Abrir detalhes de %1$s</string>
+    <string name="snackbar_dismiss">Fechar aviso</string>
+
+    <string name="detail_title">Detalhes</string>
+    <string name="detail_back">Voltar</string>
+    <string name="detail_gender">Gênero</string>
+    <string name="detail_origin">Origem</string>
+    <string name="detail_species">Espécie</string>
+    <string name="detail_status">Status</string>
+    <string name="detail_episodes">Episódios · %1$d</string>
+    <string name="detail_episode_item">%1$s — %2$s</string>
+    <string name="detail_image_of">Foto de %1$s</string>
+</resources>

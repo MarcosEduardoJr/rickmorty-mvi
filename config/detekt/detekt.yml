@@ -1,0 +1,68 @@
+# Ajustes sobre o default do detekt. Regra que nao cabe no projeto e desligada
+# aqui, com o motivo, em vez de ser silenciada com @Suppress espalhado.
+build:
+  maxIssues: 0
+
+complexity:
+  LongMethod:
+    # Composable de tela e naturalmente longo: e arvore de UI, nao logica.
+    threshold: 120
+  LongParameterList:
+    # Wrapper de campo de texto expoe rotulo, erro, teclado e acao de IME.
+    functionThreshold: 10
+    constructorThreshold: 12
+  TooManyFunctions:
+    thresholdInFiles: 40
+    thresholdInClasses: 30
+    # DAO concentra as queries de uma tabela; quebrar por contagem nao ajuda.
+    thresholdInInterfaces: 20
+    ignorePrivate: true
+  CyclomaticComplexMethod:
+    threshold: 20
+
+style:
+  MagicNumber:
+    # Numeros em Compose sao dimensoes e pesos, nao constantes de negocio.
+    ignoreNumbers: ['-1', '0', '1', '2', '100', '1000']
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotation: true
+    ignoreEnums: true
+  MaxLineLength:
+    maxLineLength: 120
+  ReturnCount:
+    max: 4
+  UnusedPrivateMember:
+    active: true
+    # @Preview e ponto de entrada da tooling, nunca chamado pelo codigo.
+    ignoreAnnotated: ['Preview', 'PreviewLightDark']
+  ForbiddenComment:
+    active: true
+    comments:
+      - reason: 'Pendencia sem dono nao deve entrar no main.'
+        value: 'FIXME:'
+
+naming:
+  FunctionNaming:
+    # Composables usam PascalCase por convencao do Compose.
+    ignoreAnnotated: ['Composable']
+
+formatting:
+  MaximumLineLength:
+    maxLineLength: 120
+  FunctionSignature:
+    active: false
+  ArgumentListWrapping:
+    active: false
+
+performance:
+  SpreadOperator:
+    # `stringResource(id, vararg)` da API do Compose so aceita spread.
+    active: false
+
+exceptions:
+  TooGenericExceptionCaught:
+    # Fronteira de use case converte qualquer falha em Outcome.Failure.
+    active: false
+  SwallowedException:
+    active: false

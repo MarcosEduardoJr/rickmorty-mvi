@@ -1,0 +1,21 @@
+# Uma unica ida ao servidor traz o personagem e os episodios. Em REST isso
+# seria uma chamada da lista mais N chamadas de episodio.
+query CharacterDetail($id: ID!) {
+  character(id: $id) {
+    id
+    name
+    status
+    species
+    gender
+    image
+    origin {
+      name
+    }
+    episode {
+      id
+      name
+      episode
+      air_date
+    }
+  }
+}

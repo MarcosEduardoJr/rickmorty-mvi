@@ -77,11 +77,7 @@ A contrapartida de não ter container gerado é não ter verificação do grafo 
 
 ## Rodar
 
-Requer JDK 17, Android SDK (compileSdk 35) e o core publicado.
-
-```bash
-git clone https://github.com/MarcosEduardoJr/android-core && (cd android-core && ./gradlew publishAllToMavenLocal)
-```
+Requer JDK 17 e o Android SDK (compileSdk 35). O core vem do JitPack, sem passo extra.
 
 ```bash
 ./gradlew :app:installDebug
@@ -89,6 +85,16 @@ git clone https://github.com/MarcosEduardoJr/android-core && (cd android-core &&
 
 ```bash
 ./gradlew test detektAll coverageAll
+```
+
+```bash
+./gradlew :feature:characters:connectedDebugAndroidTest
+```
+
+Para trabalhar no core junto com o app, publique local — `mavenLocal()` tem precedência sobre o JitPack:
+
+```bash
+git clone https://github.com/MarcosEduardoJr/android-core && (cd android-core && ./gradlew publishAllToMavenLocal)
 ```
 
 ## Testes
@@ -99,8 +105,11 @@ git clone https://github.com/MarcosEduardoJr/android-core && (cd android-core &&
 | ViewModel MVI | `:feature:characters` | 5 |
 | Conversão de status | `:domain` | 2 |
 | Grafo do Koin | `:app` | 2 |
+| Acessibilidade (instrumentado) | `:feature:characters` | 5 |
 
 O repositório é substituído por um fake com estado real — o teste valida resultado, não chamada de método.
+
+[`AccessibilityTest`](feature/characters/src/androidTest/java/com/mej/rickmorty/feature/characters/AccessibilityTest.kt) roda sobre a árvore semântica mesclada — a mesma que o TalkBack consome — e valida nome acessível em todo elemento acionável, alvo de toque ≥ 48dp medindo `touchBoundsInRoot`, título marcado como cabeçalho, carregamento em live region e estado de erro anunciado com caminho de recuperação.
 
 ## Build
 
@@ -130,5 +139,5 @@ AGP 8.7.3 · Kotlin 2.0.21 · Compose BOM 2024.11 · Apollo 4.1.0 · Koin 4.0.0 
 ## Limitações conhecidas
 
 - Sem cache em disco: o cache normalizado do Apollo é em memória, então o app depende de rede a cada abertura. `apollo-normalized-cache-sqlite` cobriria offline.
-- A acessibilidade segue os componentes do core (alvo de 48dp, rótulo obrigatório, live region), mas este repositório ainda não tem a suíte instrumentada que valida isso automaticamente.
+- A acessibilidade é verificada por teste automatizado, mas não houve navegação manual com TalkBack ligado — único jeito de conferir ordem de leitura e verbosidade dos anúncios.
 - A paginação recarrega desde a primeira página quando o filtro muda; um cache por combinação de filtro evitaria a ida à rede ao alternar chips repetidamente.

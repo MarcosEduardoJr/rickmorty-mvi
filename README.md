@@ -19,13 +19,13 @@ Kotlin, Compose, **MVI**, **Koin** e **Apollo GraphQL**, com o core compartilhad
 :feature:characters   MVI (lista e detalhe) + Compose
 ```
 
-O core não vive aqui. Vem publicado do repositório [**android-core**](https://github.com/MarcosEduardoJr/android-core):
+O core não vive aqui. Vem publicado do repositório [**rickmorty-core**](https://github.com/MarcosEduardoJr/rickmorty-core):
 
 ```
-com.github.MarcosEduardoJr.android-core:core-common
-com.github.MarcosEduardoJr.android-core:core-mvi
-com.github.MarcosEduardoJr.android-core:core-network
-com.github.MarcosEduardoJr.android-core:core-designsystem
+com.github.MarcosEduardoJr.rickmorty-core:core-common
+com.github.MarcosEduardoJr.rickmorty-core:core-mvi
+com.github.MarcosEduardoJr.rickmorty-core:core-network
+com.github.MarcosEduardoJr.rickmorty-core:core-designsystem
 ```
 
 É a divisão usada quando design system e infraestrutura servem mais de um app: versionados, publicados e consumidos por coordenada, em vez de copiados ou incluídos como submódulo. O `settings.gradle.kts` resolve `mavenLocal()` antes do JitPack, o que permite iterar no core sem publicar tag.
@@ -94,7 +94,7 @@ Requer JDK 17 e o Android SDK (compileSdk 35). O core vem do JitPack, sem passo 
 Para trabalhar no core junto com o app, publique local — `mavenLocal()` tem precedência sobre o JitPack:
 
 ```bash
-git clone https://github.com/MarcosEduardoJr/android-core && (cd android-core && ./gradlew publishAllToMavenLocal)
+git clone https://github.com/MarcosEduardoJr/rickmorty-core && (cd rickmorty-core && ./gradlew publishAllToMavenLocal)
 ```
 
 ## Testes

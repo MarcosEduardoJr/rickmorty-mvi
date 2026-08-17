@@ -3,7 +3,7 @@ agp = "8.7.3"
 kotlin = "2.0.21"
 detekt = "1.23.7"
 jacoco = "0.8.12"
-androidCore = "1.0.0"
+rickmortyCore = "2.0.0"
 
 coreKtx = "1.15.0"
 lifecycle = "2.8.7"
@@ -21,10 +21,10 @@ androidxTestJunit = "1.2.1"
 
 [libraries]
 # Publicados pelo repositorio android-core.
-core-common = { group = "com.github.MarcosEduardoJr.android-core", name = "core-common", version.ref = "androidCore" }
-core-mvi = { group = "com.github.MarcosEduardoJr.android-core", name = "core-mvi", version.ref = "androidCore" }
-core-network = { group = "com.github.MarcosEduardoJr.android-core", name = "core-network", version.ref = "androidCore" }
-core-designsystem = { group = "com.github.MarcosEduardoJr.android-core", name = "core-designsystem", version.ref = "androidCore" }
+core-common = { group = "com.github.MarcosEduardoJr.rickmorty-core", name = "core-common", version.ref = "rickmortyCore" }
+core-mvi = { group = "com.github.MarcosEduardoJr.rickmorty-core", name = "core-mvi", version.ref = "rickmortyCore" }
+core-network = { group = "com.github.MarcosEduardoJr.rickmorty-core", name = "core-network", version.ref = "rickmortyCore" }
+core-designsystem = { group = "com.github.MarcosEduardoJr.rickmorty-core", name = "core-designsystem", version.ref = "rickmortyCore" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
